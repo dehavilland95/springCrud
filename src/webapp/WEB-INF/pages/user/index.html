@@ -17,7 +17,7 @@
         </tr>
         <th:block th:each="user : ${users}">
             <tr>
-                <td><a th:href="@{/user/?id={id}(id=${user.getId()})}" th:text="${user.getFirstName() + ' ' + user.getLastName()}"></a></td>
+                <td><a th:href="@{/user?id={id}(id=${user.getId()})}" th:text="${user.getFirstName() + ' ' + user.getLastName()}"></a></td>
                 <td th:text="${user.getEmail()}"></td>
                 <td th:text="${user.getAge()}"></td>
                 <td><a th:href="@{/user/edit?id={id}(id=${user.getId()})}" th:text="Изменить"></a></td>
