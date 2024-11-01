@@ -20,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
-
 import java.util.Properties;
 import javax.sql.DataSource;
 
@@ -30,7 +29,6 @@ import javax.sql.DataSource;
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement
 public class WebConfig implements WebMvcConfigurer {
-
     @Autowired
     private Environment env;
 
@@ -85,7 +83,6 @@ public class WebConfig implements WebMvcConfigurer {
 
         return properties;
     }
-
 
     @Bean
     public SpringResourceTemplateResolver templateResolver() {

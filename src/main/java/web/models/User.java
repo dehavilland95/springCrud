@@ -14,17 +14,16 @@ public class User {
     private String lastName;
     @Column
     private String email;
-    @Column
-    private int age;
+    @Column()
+    private Integer age = 0;
     public User() {
     }
-    public User(String firstName, String lastName, String email, int age) {
+    public User(String firstName, String lastName, String email, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.age = age;
     }
-
 
     public Long getId() {
         return id;
@@ -62,7 +61,7 @@ public class User {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }

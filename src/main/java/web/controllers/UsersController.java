@@ -3,11 +3,9 @@ package web.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-//import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.*;
 import web.models.User;
 import web.service.UserService;
-
 import java.util.List;
 
 @Controller
@@ -26,12 +24,13 @@ public class UsersController {
     public String show(
             @RequestParam(name = "id", required = false, defaultValue = "0") int id,
             Model model){
-        System.out.println(id);
-        model.addAttribute("user", userService.getById(id));
+        User user = userService.getById(id);
+        model.addAttribute("user", user);
         return "user/show";
     }
     @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user){
+    public String newUser(Model model){
+        model.addAttribute("user", new User());
         return "user/new";
     }
     @PostMapping()
@@ -49,8 +48,9 @@ public class UsersController {
     @PatchMapping(params = "id")
     public String update(
             @ModelAttribute("user") User user,
-            @RequestParam(name = "id", required = false, defaultValue = "0") int id){
-        userService.update(id, user);
+            @RequestParam(name = "id", required = false, defaultValue = "0") long id){
+        user.setId(id);
+        userService.update(user);
         return "redirect:/user";
     }
     @DeleteMapping(params = "id")
