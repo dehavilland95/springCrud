@@ -42,6 +42,9 @@ public class UserDaoImpl implements UserDao {
         }
     }
     public void delete(long id) {
-        entityManager.remove(findById(id));
+        User user = findById(id);
+        if(user != null) {
+            entityManager.remove(user);
+        }
     }
 }
