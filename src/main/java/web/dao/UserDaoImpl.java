@@ -32,14 +32,7 @@ public class UserDaoImpl implements UserDao {
         entityManager.persist(user);
     }
     public void update(User user) {
-        User userToBeUpdate = findById(user.getId());
-        if(userToBeUpdate != null) {
-            userToBeUpdate.setFirstName(user.getFirstName());
-            userToBeUpdate.setLastName(user.getLastName());
-            userToBeUpdate.setEmail(user.getEmail());
-            userToBeUpdate.setAge(user.getAge());
-            entityManager.merge(userToBeUpdate);
-        }
+        entityManager.merge(user);
     }
     public void delete(long id) {
         User user = findById(id);
