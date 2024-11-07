@@ -47,14 +47,12 @@ public class UsersController {
     }
     @PatchMapping(params = "id")
     public String update(
-            @ModelAttribute("user") User user,
-            @RequestParam(name = "id", required = false, defaultValue = "0") long id){
+            @ModelAttribute("user") User user){
         userService.update(user);
         return "redirect:/user";
     }
     @DeleteMapping(params = "id")
     public String delete(@RequestParam(name = "id", required = false, defaultValue = "0") int id){
-        System.out.println();
         userService.delete(id);
         return "redirect:/user";
     }
